@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="body">
+    <!------------------------ clock----------------------->
+    
+    <div class="main">
+        <div class="clock">
+            <p class="show_time" id="show_time">10:15:37</p> <br>
+            <!-- <p class="show_date" id="show_date">2022-25-25</p> -->
+        </div>
+        <p class="show_date" id="show_date">2022-25-25</p>
+    </div>
+    <!------------------------ table of days----------------------->
+    <div class="listJob">
+        <div  id="saturday" class="shadow">
+            <span class="fixed">SAT</span>
+            <hr class="bottomLine">
+           
+        </div>
+
+        <div id="sunday" class="shadow">
+            <span>SUN</span>
+            <hr class="bottomLine">
+        </div>
+
+        <div id="monday" class="shadow mondayclass">
+            <span>MON</span>
+            <hr class="bottomLine">
+        </div>
+
+        <div id="tuesday" class="shadow">
+            <span>TUE</span>
+            <hr class="bottomLine">
+        </div>
+
+        <div id="wednesday" class="shadow">
+            <span>WED</span>
+            <hr class="bottomLine">
+        </div>
+
+        <div id="thursday" class="shadow">
+            <span>THU</span>
+            <hr class="bottomLine">
+        </div>
+
+        <div id="friday" class="shadow">
+            <span>FRI</span>
+            <hr class="bottomLine">
+        </div>
+
+        <div class="result shadow" >
+            <span class="performanceText">PERFORMANCE :</span>
+           
+            <section class="partA">
+                <button id="arzyabi">Assessment</button>
+                <span id="resultShow"></span>
+            </section>
+        </div>
+    </div>
+
+    <!------------------------ add new task----------------------->
+    <div class="addNewTask shadow">
+        <p class="titleOfAddNewTask">ToDo List App</p>
+        <input type="text" placeholder="Enter new Task" id="textInput">
+        <!------------------------ select of  days----------------------->
+        <select name="" id="selectDay" class="days">
+            <option value="saturday">Saturday</option>
+            <option value="sunday">Sunday</option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+        </select>
+        <button class="btnAddTask" id="BtnAddTask">Add</button>
+    </div>
+
+    <div class="today">
+        <span class="todayText">Today :</span> <span class="daysOfToday" id="spanDaysShow">mon</span>
+        
+    </div>
+    <!--new featur-->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    
+        <a onclick="AllTask()" id="AllTask">ALL</a>
+        <a onclick="ActiveTask()" id="ActiveLink">Active</a>
+        <a onclick="DoneTask()" id="CompletedTask">Completed</a>
+      </div>
+      
+      <!-- Use any element to open the sidenav -->
+      <span onclick="openNav()" class="showList">List ToDo</span>
+      
+    <script src="js.js"></script>
+    <button onclick="test()">test</button>
+</body>
+
+</html>
