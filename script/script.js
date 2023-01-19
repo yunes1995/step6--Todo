@@ -8,10 +8,11 @@ let ArrayForSave = [];
 
 
 
-
-AddTask.addEventListener("click", ()=>{
+function AddToDo(){
     let inputValue = input.value;
-
+    if(inputValue == ""){
+        alert("inter task");
+    }else{
     let objTask = {
         // id : todosArray.length + 1,
         content : inputValue,
@@ -23,7 +24,10 @@ AddTask.addEventListener("click", ()=>{
     TodoGenerator(ArrayForSave);
     saveInLocal(ArrayForSave);
     input.value = "";
-})
+    input.focus();
+}
+}
+AddTask.addEventListener("click",AddToDo)
 
 function TodoGenerator(Task){
     ToDoDiv.innerHTML = "";
@@ -69,12 +73,11 @@ function getSaveData(){
     TodoGenerator(ArrayForSave);
     localStorage.removeItem("ToDos")
  })
-
-
-
-
-
-
+input.addEventListener("keydown" , (button) =>{
+    if (button.code ==="Enter"){
+        AddToDo();
+    }
+})
  window.addEventListener("load" , getSaveData)
 
 
