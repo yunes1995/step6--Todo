@@ -2,6 +2,8 @@ let $ = document;
 let AddTask = $.getElementById("addButton");
 let input = $.getElementById("itemInput");
 let ToDoDiv = $.getElementById("todoList");
+let clearAll = $.getElementById("clearButton");
+
 let ArrayForSave = [];
 
 
@@ -24,6 +26,7 @@ AddTask.addEventListener("click", ()=>{
 })
 
 function TodoGenerator(Task){
+    ToDoDiv.innerHTML = "";
 
     Task.forEach((todo) => {
         let newTask = $.createElement("li");
@@ -60,6 +63,18 @@ function getSaveData(){
      TodoGenerator(ArrayForSave);
  }
 
+ // clear Button 
+ clearButton.addEventListener("click" , ()=>{
+    ArrayForSave = [];
+    TodoGenerator(ArrayForSave);
+    localStorage.removeItem("ToDos")
+ })
+
+
+
+
+
+
  window.addEventListener("load" , getSaveData)
 
 
@@ -70,5 +85,5 @@ function getSaveData(){
 
 
 const test = ()=>{
-    console.log(ArrayForSave)
+    console.log(ArrayForSave.content)
 }
