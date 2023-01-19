@@ -1,4 +1,70 @@
+
+body{
+  background-image: url(../pic/bg2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.container{
+  width: 300px;
+  height: 500px;
+  background-color: rgba(128, 128, 128, 0.37);
+}
+.BoxAdding{
+  margin-left: 425px;
+  margin-top: 200px;
+}
+.form-control{
+  width: 100px;
+}
+.AddLable{
+  position: relative;
+    font-size: 30px;
+    color: antiquewhite;
+    top: -48px;
+    right: -182px;
+}
+.form-control{
+  width: 237px;
+  height: 24px;
+}
+#addButton{
+  position: relative;
+  top: -30px;
+  right: -376px;
+  padding: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#todoList{
+  position: absolute;
+  top: 288px;
+  right: 465px;
+  width: 398px;
+  height: 306px;
+  background-color: #c91b1b;
+  list-style: none;
+}
 #todoList label{
+  margin-right: 200px;
+}
+#todoList li{
+  border: 1px solid black;
+  padding: 5px;
+  margin: 4px;
+  background-color: aqua;
+  
+}
+#clearButton{
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  padding: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+/* #todoList label{
     width: 80%;
   }
   #todoList li{
@@ -13,4 +79,4 @@
   }
   #todoList .btn{
     margin-left: 10px;
-  }
+  } */
