@@ -3,7 +3,7 @@ let AddTask = $.getElementById("addButton");
 let input = $.getElementById("itemInput");
 let ToDoDiv = $.getElementById("todoList");
 let clearAll = $.getElementById("clearButton");
-
+let newValue = "";
 let ArrayForSave = [];
 
 
@@ -15,7 +15,8 @@ function AddToDo() {
         let objTask = {
             id: ArrayForSave.length + 1,
             content: inputValue,
-            complet: false,
+            compelet: false,
+            // edit : false,
         }
 
         ArrayForSave.push(objTask);
@@ -42,14 +43,25 @@ function TodoGenerator(Task) {
         let completeButton = $.createElement("button");
         completeButton.className = "btnSuccess";
         completeButton.innerText = "Completed"
+        completeButton.setAttribute("onclick" , `completeTask(${todo.id})`)
 
         let DeleteButton = $.createElement("button");
         DeleteButton.className = "btnDelet";
         DeleteButton.innerText = "Delete"
         DeleteButton.setAttribute("onclick", `removeTask(${todo.id})`)
 
-        newTask.append(newLable, completeButton, DeleteButton);
+        let EditButtom = $.createElement("button");
+        EditButtom.classList = "EditBtn";
+        EditButtom.innerText = "Edit";
+        EditButtom.setAttribute("onclick" , `EditTask(${todo.id})`)
+
+        newTask.append(newLable, completeButton, DeleteButton ,EditButtom);
         ToDoDiv.append(newTask);
+
+        if(todo.compelet){
+            newTask.classList = "uncompleted well";
+            completeButton.innerText = "UnCompleted"
+        }
     });
 
 }
@@ -93,12 +105,41 @@ function removeTask(todoID) {
     TodoGenerator(ArrayForSave)
 }
 
+//COMPLETES TASK
+function completeTask(todoid){
 
+let localData = JSON.parse(localStorage.getItem("ToDos"));
+ArrayForSave = localData;
+ArrayForSave.forEach((todo)=>{
+    if(todo.id === todoid){
+        todo.compelet = !todo.compelet;
+    }
+})
+saveInLocal(ArrayForSave);
+TodoGenerator(ArrayForSave);
+}
+
+// EDIT TASK
+
+function EditTask(todoIDEdit){
+    newValue = prompt("enter new value");
+    let localDataAfterEdit = JSON.parse(localStorage.getItem("ToDos"));
+    ArrayForSave = localDataAfterEdit;
+
+    ArrayForSave.forEach((task) =>{
+        if(task.id === todoIDEdit){
+            task.content = newValue;
+            newValue = "";
+        }
+    })
+    saveInLocal(ArrayForSave);
+    TodoGenerator(ArrayForSave);
+}
 
 
 
 
 
 const test = () => {
-    console.log(ArrayForSave)
+    console.log(newValue);
 }
