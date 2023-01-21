@@ -7,78 +7,91 @@ let clearAll = $.getElementById("clearButton");
 let ArrayForSave = [];
 
 
-
-function AddToDo(){
+function AddToDo() {
     let inputValue = input.value;
-    if(inputValue == ""){
+    if (inputValue == "") {
         alert("inter task");
-    }else{
-    let objTask = {
-        // id : todosArray.length + 1,
-        content : inputValue,
-        complet : false,
+    } else {
+        let objTask = {
+            id: ArrayForSave.length + 1,
+            content: inputValue,
+            complet: false,
+        }
+
+        ArrayForSave.push(objTask);
+
+        TodoGenerator(ArrayForSave);
+        saveInLocal(ArrayForSave);
+        input.value = "";
+        input.focus();
+
     }
-
-    ArrayForSave.push(objTask);
-
-    TodoGenerator(ArrayForSave);
-    saveInLocal(ArrayForSave);
-    input.value = "";
-    input.focus();
 }
-}
-AddTask.addEventListener("click",AddToDo)
+AddTask.addEventListener("click", AddToDo)
 
-function TodoGenerator(Task){
+function TodoGenerator(Task) {
     ToDoDiv.innerHTML = "";
 
     Task.forEach((todo) => {
         let newTask = $.createElement("li");
-    newTask.className = "completed well";
+        newTask.className = "completed well";
 
-    let newLable = $.createElement("label");
-    newLable.innerText = todo.content;
+        let newLable = $.createElement("label");
+        newLable.innerText = todo.content;
 
-    let completeButton = $.createElement("button");
-    completeButton.className ="btnSuccess";
-    completeButton.innerText = "Completed"
+        let completeButton = $.createElement("button");
+        completeButton.className = "btnSuccess";
+        completeButton.innerText = "Completed"
 
-    let DeleteButton = $.createElement("button");
-    DeleteButton.className = "btnDelet";
-    DeleteButton.innerText  = "Delete"
+        let DeleteButton = $.createElement("button");
+        DeleteButton.className = "btnDelet";
+        DeleteButton.innerText = "Delete"
+        DeleteButton.setAttribute("onclick", `removeTask(${todo.id})`)
 
-    newTask.append(newLable, completeButton,DeleteButton);
-    ToDoDiv.append(newTask);
+        newTask.append(newLable, completeButton, DeleteButton);
+        ToDoDiv.append(newTask);
     });
-    
+
 }
 // save data
-function saveInLocal(todo){
-    localStorage.setItem("ToDos" , JSON.stringify(todo))
+function saveInLocal(todo) {
+    localStorage.setItem("ToDos", JSON.stringify(todo))
 }
 
-function getSaveData(){
-    let saveData =  JSON.parse(localStorage.getItem("ToDos"));
-     if (saveData){
-         ArrayForSave = saveData;
-     }else{
-         ArrayForSave = [];
-     }
-     TodoGenerator(ArrayForSave);
- }
+function getSaveData() {
+    let saveData = JSON.parse(localStorage.getItem("ToDos"));
+    if (saveData) {
+        ArrayForSave = saveData;
+    } else {
+        ArrayForSave = [];
+    }
+    TodoGenerator(ArrayForSave);
+}
 
- // clear Button 
- clearButton.addEventListener("click" , ()=>{
+// clear Button 
+clearButton.addEventListener("click", () => {
     ArrayForSave = [];
     TodoGenerator(ArrayForSave);
     localStorage.removeItem("ToDos")
- })
-input.addEventListener("keydown" , (button) =>{
-    if (button.code ==="Enter"){
+})
+input.addEventListener("keydown", (button) => {
+    if (button.code === "Enter") {
         AddToDo();
     }
 })
- window.addEventListener("load" , getSaveData)
+window.addEventListener("load", getSaveData)
+
+// REMOVE TASK
+function removeTask(todoID) {
+    let locaSaveData = JSON.parse(localStorage.getItem("ToDos"));
+    ArrayForSave = locaSaveData;
+    let findTask = ArrayForSave.findIndex((todo) => {
+        return todo.id === todoID;
+    })
+    ArrayForSave.splice(findTask, 1)
+    saveInLocal(ArrayForSave);
+    TodoGenerator(ArrayForSave)
+}
 
 
 
@@ -86,7 +99,6 @@ input.addEventListener("keydown" , (button) =>{
 
 
 
-
-const test = ()=>{
-    console.log(ArrayForSave.content)
+const test = () => {
+    console.log(ArrayForSave)
 }
