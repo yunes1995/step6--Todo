@@ -136,10 +136,3 @@ function EditTask(todoIDEdit){
     TodoGenerator(ArrayForSave);
 }
 
-
-
-
-
-const test = () => {
-    console.log(newValue);
-}
