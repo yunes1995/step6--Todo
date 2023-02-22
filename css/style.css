@@ -1,35 +1,34 @@
-
-body{
+body {
   background-image: url(../pic/bg2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
-.container{
+.container {
   display: flex;
   justify-content: center;
   /* align-items: center; */
-  top: 221px;
+  top: 300px;
   position: relative;
 }
 /* .BoxAdding{
   margin-left: 425px;
   margin-top: 200px;
 } */
-.form-control{
+.form-control {
   width: 100px;
 }
-.AddLable{
+.AddLable {
   position: relative;
-    font-size: 30px;
-    color: #a9c7dd;
-    top: 3px;
-    right: 14px;
+  font-size: 30px;
+  color: #a9c7dd;
+  top: 3px;
+  right: 14px;
 }
-.form-control{
+.form-control {
   width: 237px;
   height: 24px;
 }
-#addButton{
+#addButton {
   position: relative;
   top: -30px;
   right: -395px;
@@ -37,25 +36,24 @@ body{
   font-weight: bold;
   cursor: pointer;
 }
-#todoList{
+#todoList {
   position: absolute;
-  top: 288px;
-  right: 456px;
+  margin-top: 105px;
   width: 434px;
   height: 306px;
   /* background-color: #c91b1b; */
   list-style: none;
   overflow: overlay;
 }
-#todoList label{
+#todoList label {
   margin-right: 150px;
   font-size: 15px;
   font-size: 20px;
 }
-#todoList button{
+#todoList button {
   margin-right: 4px;
 }
-#addButton:hover{
+#addButton:hover {
   background-color: rgba(255, 255, 0, 0.596);
   border: none;
   padding: 5px;
@@ -67,15 +65,14 @@ body{
   background-color: aqua;
   
 } */
-.completed{
+.completed {
   border: 1px solid black;
   padding: 5px;
   margin: 4px;
   background-color: rgba(102, 255, 0, 0.377);
-  
 }
 
-#clearButton{
+#clearButton {
   position: absolute;
   bottom: 10px;
   right: 20px;
@@ -85,10 +82,10 @@ body{
   border: none;
   padding: 8px;
 }
-#clearButton:hover{
+#clearButton:hover {
   background-color: rgba(255, 0, 0, 0.644);
 }
-.uncompleted{
+.uncompleted {
   border: 1px solid black;
   padding: 5px;
   margin: 4px;
@@ -96,34 +93,44 @@ body{
   color: black;
   text-decoration: line-through;
 }
-.btnSuccess{
+.btnSuccess {
   /* background-color: rgb(192, 192, 192); */
   border: none;
   padding: 5px;
   cursor: pointer;
   border: 1px solid silver;
 }
-.btnSuccess:hover{
+.btnSuccess:hover {
   background-color: rgba(0, 128, 0, 0.692);
   color: rgba(255, 0, 0, 0.726);
 }
-.btnDelet{
+.btnDelet {
   border: none;
   padding: 5px;
   cursor: pointer;
   border: 1px solid orange;
 }
-.btnDelet:hover{
+.btnDelet:hover {
   background-color: orangered;
 }
-.EditBtn{
+.EditBtn {
   border: none;
   padding: 5px;
   cursor: pointer;
   border: 1px solid peru;
 }
-.EditBtn:hover{
+.EditBtn:hover {
   background-color: peru;
+}
+@media screen and (max-width: 1900px) {
+  .container {
+    top: 250px;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .container {
+    top: 220px;
+  }
 }
 
 /* #todoList label{
