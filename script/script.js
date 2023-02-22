@@ -105,7 +105,7 @@ function removeTask(todoID) {
     TodoGenerator(ArrayForSave)
 }
 
-//COMPLETES TASK
+//COMPLETED TASK
 function completeTask(todoid){
 
 let localData = JSON.parse(localStorage.getItem("ToDos"));
